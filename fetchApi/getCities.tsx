@@ -1,5 +1,3 @@
-import { create } from 'zustand';
-
 type city = { value: 'KER'; label: 'کرمان'; cityName: 'Kerman'; isCity: true };
 type cities = city[];
 

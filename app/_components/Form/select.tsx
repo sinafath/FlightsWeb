@@ -18,12 +18,13 @@ import {
 } from '@/components/ui/form';
 import { useFormContext } from 'react-hook-form';
 import { cities } from '@/fetchApi/getCities';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 type SelectOrigin = {
   cities: cities;
 };
 function SelectOrigin({ cities }: SelectOrigin) {
+
   const { control } = useFormContext();
   return (
     <FormField
@@ -33,7 +34,7 @@ function SelectOrigin({ cities }: SelectOrigin) {
         <FormItem>
           <FormLabel>مبدا</FormLabel>
           <div className='relative'>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <Select  onValueChange={field.onChange} defaultValue={field.value}>
               <SelectTrigger className='w-[180px] bg-background'>
                 <SelectValue placeholder='انتخاب مبدا' />
               </SelectTrigger>
@@ -57,7 +58,6 @@ function SelectOrigin({ cities }: SelectOrigin) {
 }
 
 function SelectDestination({ cities }: SelectOrigin) {
-  const route = useRouter()
   const { control } = useFormContext();
   return (
     <FormField
@@ -78,7 +78,7 @@ function SelectDestination({ cities }: SelectOrigin) {
                     <SelecetItemUi value={city.value} key={city.value}>
                       {city.label}
                     </SelecetItemUi>
-                  ))}{' '}
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>

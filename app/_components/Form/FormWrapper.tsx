@@ -5,23 +5,27 @@ import { Form as FormProvider } from '@/components/ui/form';
 import FormSchema from './FormSchema';
 import { z } from 'zod';
 import { ReactNode } from 'react';
-import { useRouter } from 'next/navigation';
-import { format } from 'date-fns';
-
+import { useParams, useRouter } from 'next/navigation';
+import { format, parseISO, toDate } from 'date-fns';
 
 type FormWrapper = {
   children: ReactNode;
 };
 
 function FormWrapper({ children }: FormWrapper) {
+  const paarams = useParams();
+  const [source, depart, dest] = paarams.catchAll.split('/');
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
+    defaultValues: {
+      source,
+      dest,
+      depart: parseISO(depart),
+    },
   });
-  const route = useRouter()
-  function onSubmit({source,dest,depart}: z.infer<typeof FormSchema>) {
-    console.log(`/${source}/${format(depart, "yyyy-MM-dd")}/${dest}`);
-    
-    route.push(`/flights/${source}/${format(depart, "yyyy-MM-dd")}/${dest}`)
+  const route = useRouter();
+  function onSubmit({ source, dest, depart }: z.infer<typeof FormSchema>) {
+    route.push(`/flights/${source}/${format(depart, 'yyyy-MM-dd')}/${dest}`);
   }
 
   return (

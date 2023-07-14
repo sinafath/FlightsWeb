@@ -5,8 +5,6 @@ type params = { params: { catchAll: [string, string, string] } };
 
 async function Flight({ params: { catchAll } }: params) {
   const flights = await getFlights(...catchAll);
-  console.log(flights);
-
   return (
     <div className='mx-40 mx-auto flex max-w-screen-xl flex-col gap-14  pt-20 '>
       {flights.map(
@@ -15,7 +13,6 @@ async function Flight({ params: { catchAll } }: params) {
           departTime,
           destnationCityNameFa,
           operatingAirlineNamePersian,
-
           flightDuration,
           englishName,
           flightNumber,

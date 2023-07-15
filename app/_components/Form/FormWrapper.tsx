@@ -18,7 +18,7 @@ function FormWrapper({ children }: FormWrapper) {
 
   const [source = undefined, depart = undefined, dest = undefined] =
     paarams?.catchAll?.split('/') ?? [];
-    
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -36,7 +36,7 @@ function FormWrapper({ children }: FormWrapper) {
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='w mx-auto flex h-auto flex-col justify-center gap-4 rounded-lg bg-gray-50 py-16  md:mt-24 md:h-12 md:max-w-screen-xl md:flex-row md:items-center md:gap-16 md:py-20'
+        className='w mx-auto flex h-auto w-[100%] flex-col justify-center gap-4 rounded-lg bg-gray-50 py-16 pr-10  md:mt-24 md:h-12 md:max-w-screen-xl md:flex-row md:items-center md:gap-16 md:py-20 md:pr-0'
       >
         {children}
       </form>

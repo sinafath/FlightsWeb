@@ -20,7 +20,7 @@ async function Flight({ params: { catchAll } }: params) {
           originCityNameFa,
         }) => (
           <div
-            className='flex justify-center gap-48 rounded-lg border-[1px]  border-slate-200 p-8 flex-col mx-5 md:flex-row md:mx-0'
+            className='flex justify-center gap-48 rounded-lg border-[1px] align-center  border-slate-200 p-8 flex-col mx-5 md:flex-row md:mx-0'
             key={Math.random()}
           >
             <div className='flex gap-8'>
@@ -46,7 +46,7 @@ async function Flight({ params: { catchAll } }: params) {
               </div>
             </div>
 
-            <div>{flightNumber}</div>
+            <div className='alin'>{flightNumber}</div>
           </div>
         )
       )}

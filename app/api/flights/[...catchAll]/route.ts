@@ -29,7 +29,7 @@ async function GET(request: Request, { params: { catchAll } }: params) {
       flightDuration: `${getRandomInt(1, 25)}:${getRandomInt(1, 61)}`,
       id: 'e04ce80a-ac41-486a-b6e0-ac5a8f342936',
       englishName:"Mc Donnell Douglas Economy RR",
-      image: '/قشم ایر.png',
+      image: 'https://flightio.com/Uploads/Airlines/Logo/IR.png',
     }))
   );
 }

@@ -14,13 +14,17 @@ type FormWrapper = {
 
 function FormWrapper({ children }: FormWrapper) {
   const paarams = useParams();
-  const [source, depart, dest] = paarams.catchAll.split('/');
+  console.log(paarams);
+
+  const [source = undefined, depart = undefined, dest = undefined] =
+    paarams?.catchAll?.split('/') ?? [];
+    
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       source,
       dest,
-      depart: parseISO(depart),
+      depart: depart ? parseISO(depart) : undefined,
     },
   });
   const route = useRouter();
